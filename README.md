@@ -236,7 +236,7 @@ A replacement for the alert box
 
 ##TODO
 
-[ ] better documentation
-[ ] tests
-[ ] make sure all subviews are destroyed properly
-[ ] take react components for sub views
+- [ ] better documentation
+- [ ] tests
+- [ ] make sure all subviews are destroyed properly
+- [ ] take react components for sub views
