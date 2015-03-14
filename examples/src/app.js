@@ -38,6 +38,7 @@ function showAdvancedModal() {
     header: headerTemplate({
       title: 'FOO BAR BAZ'
     }),
+    footer: $('<div><button class="btn">BAZ</button></div>').html(),
     //takes html!
     body: $('<div><button>FOO</button></div>').html(),
     onShow: onShow
@@ -61,6 +62,21 @@ function showConfirmModal() {
   $('body').append(contentView.render().el);
 }
 
+function showNonDismissableConfirmModal() {
+  var ContentModal = MaxwellModal.ConfirmModal.extend({
+    onShow: onShow,
+    onHide: onHide,
+    onYes: onYes,
+    onNo: onNo,
+    dismissable: false,
+    body: 'Are you sure you want to continue',
+    title: 'Continue?',
+    yesLabel: 'okey dokie'
+  });
+  var contentView = new ContentModal();
+  $('body').append(contentView.render().el);
+}
+
 function showAlertModal() {
   var ContentModal = MaxwellModal.AlertModal.extend({
     onShow: onShow,
@@ -76,5 +92,6 @@ function showAlertModal() {
 
 $('.showModal').click(showModal);
 $('.showConfirmModal').click(showConfirmModal);
+$('.showNonDismissableConfirmModal').click(showNonDismissableConfirmModal);
 $('.showAdvancedModal').click(showAdvancedModal);
 $('.showAlertModal').click(showAlertModal);
