@@ -15,7 +15,7 @@ There are three types of modals available
 
 This is the basic modal. It has two types of configurations
 
-* Content 
+* Content
 * Header, Body, Footer
 
 ```json
@@ -79,7 +79,7 @@ This is the basic modal. It has two types of configurations
 ```
 ####Content
 
-If the content property is present it will operate in content mode. 
+If the content property is present it will operate in content mode.
 
 ```javascript
 var ContentModal = MaxwellModal.Modal.extend({
@@ -91,7 +91,7 @@ var ContentModal = MaxwellModal.Modal.extend({
 ```
 This will create a modal that contains the word foo and nothing else.
 
-Content can take a DOM element, rendered html, rendered backbone view, handlebars template output or a function. 
+Content can take a DOM element, rendered html, rendered backbone view, handlebars template output or a function.
 
 
 ####Header,Body,Footer
@@ -111,13 +111,13 @@ var ContentModal = MaxwellModal.Modal.extend({
   var contentView = new ContentModal();
   $('body').append(contentView.render().el);
 ```
-Note the handlebars template for the header, rendered html for the body. 
-These could take a rendered backbone view. 
+Note the handlebars template for the header, rendered html for the body.
+These could take a rendered backbone view.
 
 
-###Confirm Modal 
+###Confirm Modal
 
-A replacement for the confirm box 
+A replacement for the confirm box
 
 ####Options
 
@@ -177,11 +177,11 @@ A replacement for the confirm box
     yesLabel: 'okey dokie'
   });
   ```
-This produces a modal with two buttons, yes and no. their labels are configurable as well as what occurs on yes and on no. 
+This produces a modal with two buttons, yes and no. their labels are configurable as well as what occurs on yes and on no.
 
 ###Alert Modal
 
-A replacement for the alert box 
+A replacement for the alert box
 
 ####Options
 
@@ -238,5 +238,5 @@ A replacement for the alert box
 
 - [ ] better documentation
 - [ ] tests
-- [ ] make sure all subviews are destroyed properly
-- [ ] take react components for sub views
+- [x] make sure all subviews are destroyed properly
+- [x] take react components for sub views

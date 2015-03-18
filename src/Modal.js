@@ -64,14 +64,14 @@ module.exports = Backbone.View.extend({
    * @returns {boolean} if false the hide function won't execute
    */
   onYes : null,
-  
+
   events : {
     'click .yes-button' : 'yesButton',
     'click .no-button' : 'noButton'
   },
   yesButton: function() {
     var success = true;
-    
+
     if (this.onYes) {
       success = this.onYes();
     }
@@ -101,17 +101,17 @@ module.exports = Backbone.View.extend({
     var self = this;
     var header = this.header;
     var footer = this.footer;
-    
+
     this.$el.html(modalTemplate());
-    //replace all the content of the modal 
+    //replace all the content of the modal
     if (this.content) {
-      this.$el.find('.modal-content').html(this.content);  
+      this.$el.find('.modal-content').html(this.content);
     } else {
-      //for closure scenarios 
+      //for closure scenarios
       if (_.isFunction(this.header)) {
         header = this.header();
       }
-      //for closure scenarios 
+      //for closure scenarios
       if (_.isFunction(this.footer)) {
         footer = this.footer();
       }
@@ -127,7 +127,7 @@ module.exports = Backbone.View.extend({
       //append the footer - this is driven by the configuration
       this.$el.find('.modal-footer').append(footer);
     }
-    
+
     if (this.dismissable === false) {
       options ={
         "backdrop" : "static",
@@ -136,7 +136,7 @@ module.exports = Backbone.View.extend({
     }
     //apply the options and treat the modal as a modal
     this.$el.find('.modal').modal(options);
-    
+
     // run the on show function
     if (this.onShow) {
       this.onShow();

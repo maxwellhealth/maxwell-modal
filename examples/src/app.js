@@ -1,5 +1,6 @@
 var Backbone = require('backbone');
 var $ = require('jquery');
+var React = require('react');
 Backbone.$ = $;
 window.jQuery = $;
 window.$ = $;
@@ -90,8 +91,31 @@ function showAlertModal() {
   $('body').append(contentView.render().el);
 }
 
+function showReactPoweredModal() {
+  var reactBody = document.createElement('div');
+  var foo = React.createClass({
+    render: function() {
+      return (
+        React.createElement("div", null, "Hello ",this.props.name)
+      );
+    }
+  });
+  React.render(React.createElement(foo, {name: "John"}),reactBody);
+  var ContentModal = MaxwellModal.AlertModal.extend({
+    onShow: onShow,
+    onHide: onHide,
+    onYes: onYes,
+    body: reactBody,
+    title: 'Explosion?',
+    yesLabel: 'OK'
+  });
+  var contentView = new ContentModal();
+  $('body').append(contentView.render().el);
+}
+
 $('.showModal').click(showModal);
 $('.showConfirmModal').click(showConfirmModal);
 $('.showNonDismissableConfirmModal').click(showNonDismissableConfirmModal);
 $('.showAdvancedModal').click(showAdvancedModal);
 $('.showAlertModal').click(showAlertModal);
+$('.showReactPoweredModal').click(showReactPoweredModal);
