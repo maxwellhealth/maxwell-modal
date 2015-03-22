@@ -6,8 +6,8 @@ Backbone.$ = $;
 var Modal = require('./Modal');
 
 module.exports = Modal.extend({
-  
-  header : function(){ 
+
+  header : function(){
     return headerTemplate({
       title: this.title,
       dismissable: this.dismissable
@@ -17,8 +17,8 @@ module.exports = Modal.extend({
     return footerTemplate({
       yesLabel: this.yesLabel,
       noLabel: this.noLabel
-    });  
+    });
   }
 
-  
+
 });

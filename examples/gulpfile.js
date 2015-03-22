@@ -8,7 +8,7 @@ var gulp = require('gulp'),
    jasmine = require('gulp-jasmine'),
    source  = require('vinyl-source-stream');
   // , $  = require('gulp-load-plugins')();
-  
+
 function watchifier(entryPath,entryFile, destPath) {
   var b = browserify([entryPath],{ cache: {}, packageCache: {}, fullPaths: true,debug: true});
   var clientStream = watchify(b)
@@ -19,10 +19,10 @@ function watchifier(entryPath,entryFile, destPath) {
     this.emit('end');
   });
   function rebundle () {
-    return clientStream.bundle(function(err){
+    return clientStream.transform('hbsfy').bundle(function(err){
       if (err) {
         console.log(err);
-      } 
+      }
     })
     .pipe(source(entryFile))
     .pipe(buffer())
@@ -32,7 +32,7 @@ function watchifier(entryPath,entryFile, destPath) {
     // .pipe($.notify(completeMessage));
   }
   clientStream.on('update', rebundle);
-  
+
   return rebundle();
 }
 

@@ -3,6 +3,7 @@ var $ = require('jquery');
 var _ = require('lodash');
 var modalTemplate = require('./templates/modal.handlebars');
 var bodyTemplate = require('./templates/body.handlebars');
+var headerTemplate = require('./templates/header.handlebars');
 var footerWrapperTemplate = require('./templates/footer-wrapper.handlebars');
 Backbone.$ = $;
 // require('bootstrap');
@@ -110,6 +111,11 @@ module.exports = Backbone.View.extend({
       //for closure scenarios
       if (_.isFunction(this.header)) {
         header = this.header();
+      } else if (this.header === null) {
+        header = headerTemplate({
+          title: this.title,
+          dismissable: this.dismissable
+        });
       }
       //for closure scenarios
       if (_.isFunction(this.footer)) {
