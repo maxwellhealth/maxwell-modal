@@ -2,6 +2,10 @@
 
 ##Bootstrap and Backbone Powered Modal Views
 
+[![Build Status](https://travis-ci.org/maxwellhealth/maxwell-modal.svg?branch=master)](https://travis-ci.org/maxwellhealth/maxwell-modal)
+
+[![Coverage Status](https://coveralls.io/repos/maxwellhealth/maxwell-modal/badge.svg?branch=master)](https://coveralls.io/r/maxwellhealth/maxwell-modal?branch=master)
+
 ##Install
 
 `npm install maxwell-modal`
