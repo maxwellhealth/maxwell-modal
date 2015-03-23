@@ -116,6 +116,8 @@ module.exports = Backbone.View.extend({
           title: this.title,
           dismissable: this.dismissable
         });
+      } else {
+        header = '<div class="modal-header">'+this.header+'</div>';
       }
       //for closure scenarios
       if (_.isFunction(this.footer)) {

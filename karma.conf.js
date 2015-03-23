@@ -1,4 +1,10 @@
 var istanbul = require('browserify-istanbul');
+var hbsfy = require('hbsfy');
+var coverOptions = {
+  ignore: [ '**/**.handlebars'],
+  defaultIgnore: true
+};
+
 // Karma configuration
 // Generated on Fri Nov 21 2014 13:33:54 GMT-0500 (EST)
 
@@ -26,6 +32,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
+      'src/**/**.handlebars'
     ],
 
 
@@ -38,7 +45,14 @@ module.exports = function(config) {
     },
 
     browserify: {
-      transform: ["hbsfy","browserify-istanbul"],
+      // transform: ["hbsfy","browserify-istanbul"],
+      configure: function(bundle){
+        bundle.on('prebundle', function(){
+          bundle
+            .transform(hbsfy)
+            .transform(istanbul(coverOptions));
+        });
+      },
       debug: true,
 
       // don't forget to register the extensions
@@ -73,10 +87,9 @@ module.exports = function(config) {
     browsers: ['Firefox'],
     coverageReporter: {
       reporters:[
-        {type: 'html', dir:'coverage/'},
-        {type: 'text'},
         {type: 'lcov'},
-        {type: 'text-summary'}
+        {type: 'text-summary'},
+        {type: 'html', dir: 'coverage'}
       ]
     },
 

@@ -16,16 +16,14 @@ describe('foo', function () {
       body: testBody,
       title: testTitle,
 
-      footer: testFooter,
       onShow: function() {show = true;},
       onHide: function() {hide = true;expect(hide).toBe(true);}
     });
     var contentView = new ContentModal();
     var body = contentView.render().el;
-    expect($(body).find('button').text()).toBe('×');
+    expect($(body).find('.modal-header button').text()).toBe('×');
     expect($(body).find('h3').text()).toBe(testTitle);
     expect($(body).find('.modal-body').text()).toBe(testBody);
-    expect($(body).find('.modal-footer').text()).toBe(testFooter);
 
   });
 });
