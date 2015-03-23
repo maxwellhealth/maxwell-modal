@@ -131,9 +131,12 @@ module.exports = Backbone.View.extend({
       //append the body - this is driven by the configuration
       this.$el.find('.modal-body').append(this.body);
       //append the footer wrapper
-      this.$el.find('.modal-content').append(footerWrapperTemplate());
-      //append the footer - this is driven by the configuration
-      this.$el.find('.modal-footer').append(footer);
+      if (footer !== null) {
+        this.$el.find('.modal-content').append(footerWrapperTemplate());
+        //append the footer - this is driven by the configuration
+        this.$el.find('.modal-footer').append(footer);
+      }
+
     }
 
     if (this.dismissable === false) {
