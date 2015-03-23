@@ -49,7 +49,7 @@ module.exports = function(config) {
       configure: function(bundle){
         bundle.on('prebundle', function(){
           bundle
-            .transform(hbsfy)
+            // .transform(hbsfy)
             .transform(istanbul(coverOptions));
         });
       },

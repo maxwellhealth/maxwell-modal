@@ -1,6 +1,6 @@
 {
   "name": "maxwell-modal",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,8 @@
   },
   "browserify": {
     "transform": [
-      "debowerify"
+      "debowerify",
+      "hbsfy"
     ]
   },
   "devDependencies": {
