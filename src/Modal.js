@@ -71,14 +71,28 @@ module.exports = Backbone.View.extend({
     'click .no-button' : 'noButton'
   },
   yesButton: function() {
-    var success = true;
+    var self = this;
 
-    if (this.onYes) {
-      success = this.onYes();
+    // If onYes is not a function, then close modal if truthy
+    if (!_.isFunction(this.onYes)) {
+      if (this.onYes === true) {
+        self.$el.find('.modal').modal('hide');
+      }
+      return;
     }
-
-    if (success) {
-      this.$el.find('.modal').modal('hide');
+    // If onYes is a function, then call it and close modal if truthy
+    if (this.onYes.length === 1) {
+      // If onYes has been defined with an arity of 1, then feed it a callback
+      this.onYes(function (closeModal) {
+        if (closeModal === true) {
+          self.$el.find('.modal').modal('hide');
+        }
+      });
+    } else if (this.onYes.length === 0) {
+      // If onYes has been defined with an arity of 0, then call it
+      if (this.onYes() === true) {
+        self.$el.find('.modal').modal('hide');
+      }
     }
   },
 
