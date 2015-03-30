@@ -237,6 +237,9 @@ A replacement for the alert box
   });
 ```
 
+## TO TEST:
+run `npm test`
+
 
 ##TODO
 
