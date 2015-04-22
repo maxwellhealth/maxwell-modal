@@ -84,7 +84,7 @@ describe('Modal', function () {
     $(body).find('.modal').modal('hide');
   });
 
-  var modalCloseTests = [
+  var onYesModalCloseTests = [
     {
       closes: true,
       condition: 'onYes is true',
@@ -125,7 +125,7 @@ describe('Modal', function () {
       }
     }
   ];
-  modalCloseTests.forEach(function (test) {
+  onYesModalCloseTests.forEach(function (test) {
     var closes = test.closes ? '' : 'NOT';
     var vis = test.closes ? 'none' : 'block';
     it('should' + closes + ' ' + test.condition, function () {
@@ -137,6 +137,64 @@ describe('Modal', function () {
       var body = contentView.render().el;
       expect($(body).find('.modal').css('display')).toBe('block');
       contentView.yesButton();
+      expect($(body).find('.modal').css('display')).toBe(vis);
+    });
+  });
+
+  // TODO: Figure out how to consolidate the noButton and yesButton functions
+  var onNoModalCloseTests = [
+    {
+      closes: true,
+      condition: 'onNo is true',
+      onNo: true
+    }, {
+      closes: false,
+      condition: 'onNo is not set',
+      onNo: null
+    }, {
+      closes: true,
+      condition: 'onNo returns a callback with true for its parameter',
+      onNo: function (callback) {
+        return callback(true);
+      }
+    }, {
+      closes: false,
+      condition: 'onNo returns a callback with false for its parameter',
+      onNo: function (callback) {
+        return callback(false);
+      }
+    }, {
+      closes: true,
+      condition: 'onNo is a function that returns true',
+      onNo: function () {
+        return true;
+      }
+    }, {
+      closes: false,
+      condition: 'onNo is a function that returns false',
+      onNo: function () {
+        return false;
+      }
+    }, {
+      closes: false,
+      condition: 'onNo has more than one parameter',
+      onNo: function (one, two) {
+        return one + two;
+      }
+    }
+  ];
+  onNoModalCloseTests.forEach(function (test) {
+    var closes = test.closes ? '' : 'NOT';
+    var vis = test.closes ? 'none' : 'block';
+    it('should' + closes + ' ' + test.condition, function () {
+      var ContentModal = Modal.extend({
+        dismissable: false,
+        onNo: test.onNo
+      });
+      var contentView = new ContentModal();
+      var body = contentView.render().el;
+      expect($(body).find('.modal').css('display')).toBe('block');
+      contentView.noButton();
       expect($(body).find('.modal').css('display')).toBe(vis);
     });
   });

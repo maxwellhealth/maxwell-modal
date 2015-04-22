@@ -73,7 +73,7 @@ module.exports = Backbone.View.extend({
   yesButton: function() {
     var self = this;
 
-    // If onYes is not a function, then close modal if truthy
+    // If onYes is not a function, then close modal if true
     if (!_.isFunction(this.onYes)) {
       if (this.onYes === true) {
         self.$el.find('.modal').modal('hide');
@@ -97,18 +97,33 @@ module.exports = Backbone.View.extend({
   },
 
   /**
-   * [noButton description]
-   * @return {[type]} [description]
+   * what occurs when the user clicks no/cancel
+   * @return {boolean} if false, then the hide function won't execute
    */
   noButton: function() {
-    var success = true;
+    var self = this;
 
-    if (this.onNo) {
-      success = this.onNo();
+    // If onNo is not a function, then close modal if true
+    if (!_.isFunction(this.onNo)) {
+      if (this.onNo === true) {
+        this.$el.find('.modal').modal('hide');
+      }
+      return;
     }
 
-    if (success) {
-      this.$el.find('.modal').modal('hide');
+    // If onNo is a function, then call it and close modal if true
+    if (this.onNo.length === 1) {
+      // If onNo has been defined with an arity of 1, then feed it a callback
+      this.onNo(function (closeModal) {
+        if (closeModal === true) {
+          self.$el.find('.modal').modal('hide');
+        }
+      });
+    } else if (this.onNo.length === 0) {
+      // If onNo has been defined with an arity of 0, then call it
+      if (this.onNo() === true) {
+        this.$el.find('.modal').modal('hide');
+      }
     }
   },
   render : function() {
@@ -150,7 +165,6 @@ module.exports = Backbone.View.extend({
         //append the footer - this is driven by the configuration
         this.$el.find('.modal-footer').append(footer);
       }
-
     }
 
     if (this.dismissable === false) {
