@@ -6,7 +6,6 @@ Backbone.$ = $;
 var Modal = require('./Modal');
 
 module.exports = Modal.extend({
-
   header : function(){
     return headerTemplate({
       title: this.title,
@@ -19,6 +18,4 @@ module.exports = Modal.extend({
       noLabel: this.noLabel
     });
   }
-
-
 });
