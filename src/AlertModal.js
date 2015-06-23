@@ -6,7 +6,6 @@ Backbone.$ = $;
 var Modal = require('./Modal');
 
 module.exports = Modal.extend({
-
   header : function(){
     return headerTemplate({
       title: this.title,
@@ -18,5 +17,8 @@ module.exports = Modal.extend({
       yesLabel: this.yesLabel,
       noLabel: this.noLabel
     });
+  },
+  getYesButton: function () {
+    return this.$el.find('.yes-button');
   }
 });

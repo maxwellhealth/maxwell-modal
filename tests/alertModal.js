@@ -10,7 +10,6 @@ describe('foo', function () {
     var hide = false;
     var testTitle = 'Test Title';
     var testBody = 'Test Body';
-    var testFooter = 'Test Footer';
 
     var ContentModal = Modal.extend({
       body: testBody,
@@ -24,6 +23,12 @@ describe('foo', function () {
     expect($(body).find('.modal-header button').text()).toBe('×');
     expect($(body).find('h3').text()).toBe(testTitle);
     expect($(body).find('.modal-body').text()).toBe(testBody);
+  });
 
+  it('should have one yesButton', function () {
+    var ContentModal = Modal.extend({});
+    var contentView = new ContentModal();
+    contentView.render();
+    expect(contentView.getYesButton().length).toBe(1);
   });
 });
