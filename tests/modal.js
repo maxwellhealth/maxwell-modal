@@ -224,7 +224,6 @@ describe('Modal', function () {
 
     var ContentModal = Modal.extend({
       content: testBody
-
     });
     var contentView = new ContentModal();
     var body = contentView.render().el;
@@ -235,7 +234,6 @@ describe('Modal', function () {
     var testHeader = 'Test Header';
     var ContentModal = Modal.extend({
       header: testHeader
-
     });
     var contentView = new ContentModal();
     var body = contentView.render().el;

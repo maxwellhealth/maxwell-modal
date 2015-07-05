@@ -17,5 +17,11 @@ module.exports = Modal.extend({
       yesLabel: this.yesLabel,
       noLabel: this.noLabel
     });
+  },
+  getYesButton: function () {
+    return this.$el.find('.yes-button');
+  },
+  getNoButton: function () {
+    return this.$el.find('.no-button');
   }
 });
