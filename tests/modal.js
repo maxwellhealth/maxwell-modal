@@ -240,13 +240,6 @@ describe('Modal', function() {
     expect($(body).find('.modal-header').text()).toBe(testHeader);
   });
 
-  it('should close the modal', function() {
-    var ContentModal = Modal.extend({});
-    var contentView = new ContentModal();
-    var body = contentView.render().el;
-    contentView.closeModal();
-    expect($(body).find('.modal').css('display')).toBe('none');
-  });
 
   it('should close the modal', function() {
     var ContentModal = Modal.extend({});
