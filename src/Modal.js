@@ -34,7 +34,7 @@ module.exports = Backbone.View.extend({
    * @type {function}
    */
   onShow: null,
-    /**
+  /**
    * Function that executes on modal hide
    * @type {function}
    */
@@ -44,31 +44,37 @@ module.exports = Backbone.View.extend({
    * whether the modal is able to be dismissed
    * @type {Boolean}
    */
-  dismissable : true,
+  dismissable: true,
   /**
    * when using the confirm or alert modals, setting the title appropriately
    * @type {[type]}
    */
   title: null,
-  yesLabel : 'Yes',
+  yesLabel: 'Yes',
   /**
    * what occurs when the user clicks no
    * @type {function}
    * @returns {boolean} if false the hide function won't execute
    */
-  onNo : null,
-  noLabel : 'No',
+  onNo: null,
+  noLabel: 'No',
 
-   /**
-   * what occurs when the user clicks yes/ok
-   * @type {function}
-   * @returns {boolean} if false the hide function won't execute
-   */
-  onYes : null,
+  /**
+  * what occurs when the user clicks yes/ok
+  * @type {function}
+  * @returns {boolean} if false the hide function won't execute
+  */
+  onYes: null,
 
-  events : {
-    'click .yes-button' : 'yesButton',
-    'click .no-button' : 'noButton'
+  events: {
+    'click .yes-button': 'yesButton',
+    'click .no-button': 'noButton'
+  },
+  closeModal: function(callback) {
+    this.$el.find('.modal').modal('hide');
+    if (_.isFunction(callback)) {
+      return callback();
+    }
   },
   yesButton: function() {
     var self = this;
@@ -83,7 +89,7 @@ module.exports = Backbone.View.extend({
     // If onYes is a function, then call it and close modal if truthy
     if (this.onYes.length === 1) {
       // If onYes has been defined with an arity of 1, then feed it a callback
-      this.onYes(function (closeModal) {
+      this.onYes(function(closeModal) {
         if (closeModal === true) {
           self.$el.find('.modal').modal('hide');
         }
@@ -114,7 +120,7 @@ module.exports = Backbone.View.extend({
     // If onNo is a function, then call it and close modal if true
     if (this.onNo.length === 1) {
       // If onNo has been defined with an arity of 1, then feed it a callback
-      this.onNo(function (closeModal) {
+      this.onNo(function(closeModal) {
         if (closeModal === true) {
           self.$el.find('.modal').modal('hide');
         }
@@ -126,8 +132,8 @@ module.exports = Backbone.View.extend({
       }
     }
   },
-  render : function() {
-    var options  = {};
+  render: function() {
+    var options = {};
     var self = this;
     var header = this.header;
     var footer = this.footer;
@@ -146,7 +152,7 @@ module.exports = Backbone.View.extend({
           dismissable: this.dismissable
         });
       } else {
-        header = '<div class="modal-header">'+this.header+'</div>';
+        header = '<div class="modal-header">' + this.header + '</div>';
       }
       //for closure scenarios
       if (_.isFunction(this.footer)) {
@@ -168,9 +174,9 @@ module.exports = Backbone.View.extend({
     }
 
     if (this.dismissable === false) {
-      options ={
-        "backdrop" : "static",
-        "keyboard" : false
+      options = {
+        "backdrop": "static",
+        "keyboard": false
       };
     }
     //apply the options and treat the modal as a modal
@@ -181,7 +187,7 @@ module.exports = Backbone.View.extend({
       this.onShow();
     }
     // if its hidden run the on hide function and remove the view
-    this.$el.find('.modal').on('hidden.bs.modal',function() {
+    this.$el.find('.modal').on('hidden.bs.modal', function() {
       if (self.onHide) {
         self.onHide();
       }

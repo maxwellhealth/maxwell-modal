@@ -4,7 +4,7 @@ global.jQuery = $;
 global.$ = $;
 require('../bower_components/bootstrap/dist/js/bootstrap.min.js');
 
-describe('Modal', function () {
+describe('Modal', function() {
   it('should render', function() {
     var show = false;
     var hide = false;
@@ -38,7 +38,7 @@ describe('Modal', function () {
     var testTitle = 'Test Title';
     var testBody = 'Test Body';
     var testFooter = 'Test Footer';
-    var onHide = function () {
+    var onHide = function() {
       onHide.called = true;
     };
     var ContentModal = Modal.extend({
@@ -96,39 +96,39 @@ describe('Modal', function () {
     }, {
       closes: true,
       condition: 'onYes returns a callback with true for its parameter',
-      onYes: function (callback) {
+      onYes: function(callback) {
         return callback(true);
       }
     }, {
       closes: false,
       condition: 'onYes returns a callback with false for its parameter',
-      onYes: function (callback) {
+      onYes: function(callback) {
         return callback(false);
       }
     }, {
       closes: true,
       condition: 'onYes is a function that returns true',
-      onYes: function () {
+      onYes: function() {
         return true;
       }
     }, {
       closes: false,
       condition: 'onYes is a function that returns false',
-      onYes: function () {
+      onYes: function() {
         return false;
       }
     }, {
       closes: false,
       condition: 'onYes has more than one parameter',
-      onYes: function (one, two) {
+      onYes: function(one, two) {
         return one + two;
       }
     }
   ];
-  onYesModalCloseTests.forEach(function (test) {
+  onYesModalCloseTests.forEach(function(test) {
     var closes = test.closes ? '' : 'NOT';
     var vis = test.closes ? 'none' : 'block';
-    it('should' + closes + ' ' + test.condition, function () {
+    it('should' + closes + ' ' + test.condition, function() {
       var ContentModal = Modal.extend({
         dismissable: false,
         onYes: test.onYes
@@ -154,39 +154,39 @@ describe('Modal', function () {
     }, {
       closes: true,
       condition: 'onNo returns a callback with true for its parameter',
-      onNo: function (callback) {
+      onNo: function(callback) {
         return callback(true);
       }
     }, {
       closes: false,
       condition: 'onNo returns a callback with false for its parameter',
-      onNo: function (callback) {
+      onNo: function(callback) {
         return callback(false);
       }
     }, {
       closes: true,
       condition: 'onNo is a function that returns true',
-      onNo: function () {
+      onNo: function() {
         return true;
       }
     }, {
       closes: false,
       condition: 'onNo is a function that returns false',
-      onNo: function () {
+      onNo: function() {
         return false;
       }
     }, {
       closes: false,
       condition: 'onNo has more than one parameter',
-      onNo: function (one, two) {
+      onNo: function(one, two) {
         return one + two;
       }
     }
   ];
-  onNoModalCloseTests.forEach(function (test) {
+  onNoModalCloseTests.forEach(function(test) {
     var closes = test.closes ? '' : 'NOT';
     var vis = test.closes ? 'none' : 'block';
-    it('should' + closes + ' ' + test.condition, function () {
+    it('should' + closes + ' ' + test.condition, function() {
       var ContentModal = Modal.extend({
         dismissable: false,
         onNo: test.onNo
@@ -238,5 +238,34 @@ describe('Modal', function () {
     var contentView = new ContentModal();
     var body = contentView.render().el;
     expect($(body).find('.modal-header').text()).toBe(testHeader);
+  });
+
+  it('should close the modal', function() {
+    var ContentModal = Modal.extend({});
+    var contentView = new ContentModal();
+    var body = contentView.render().el;
+    contentView.closeModal();
+    expect($(body).find('.modal').css('display')).toBe('none');
+  });
+
+  it('should close the modal', function() {
+    var ContentModal = Modal.extend({});
+    var contentView = new ContentModal();
+    var body = contentView.render().el;
+    contentView.closeModal();
+    expect($(body).find('.modal').css('display')).toBe('none');
+  });
+
+  it('should close the modal and call the callback', function() {
+    var ContentModal = Modal.extend({});
+    var contentView = new ContentModal();
+    var body = contentView.render().el;
+    var called = false;
+    contentView.closeModal(function() {
+      called = true;
+    });
+
+    expect($(body).find('.modal').css('display')).toBe('none');
+    expect(called).toBe(true);
   });
 });
