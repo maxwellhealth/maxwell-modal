@@ -7,7 +7,9 @@ var Modal = require('./Modal');
 module.exports = Modal.extend({
 	dismissable: false,
 	header: function(){
-		return headerTemplate();
+		return headerTemplate({
+			title: this.title
+		});
 	},
 	footer: function(){
 		return null;
