@@ -22,6 +22,8 @@ This is the basic modal. It has two types of configurations
 * Content
 * Header, Body, Footer
 
+
+
 ```json
 {  /**
    * footer html
@@ -123,6 +125,17 @@ These could take a rendered backbone view.
 
 A replacement for the confirm box
 
+```
++========================+
+|         Title          |
++------------------------+
+|         body           |
+|                        |
++------------------------+
+|  noLabel  |  yesLabel  |
++------------------------+
+```
+
 ####Options
 
 ```json
@@ -186,6 +199,17 @@ This produces a modal with two buttons, yes and no. their labels are configurabl
 ###Alert Modal
 
 A replacement for the alert box
+
+```
++========================+
+|         Title          |
++------------------------+
+|         body           |
+|                        |
++------------------------+
+|        yesLabel        |
++------------------------+
+```
 
 ####Options
 
