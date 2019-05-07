@@ -50,13 +50,11 @@ gulp.task('lint', function() {
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
-
-
-gulp.task('watch',['lint','watchify'], function(){
-  gulp.watch(['src/**/**'], [  'lint' ]);
-  // gulp.watch('public/src/sass/**', [ 'sass' ]);
-});
-
 gulp.task('watchify',function() {
   watchifier('./src/app.js','app.js','js','Scripts Complete');
 });
+
+//gulp.task('watch',['lint','watchify'], function(){
+  //gulp.watch(['src/**/**'], [  'lint' ]);
+  // gulp.watch('public/src/sass/**', [ 'sass' ]);
+//});
