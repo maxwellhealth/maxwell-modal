@@ -8,12 +8,12 @@
   },
   "author": "James Hrisho",
   "dependencies": {
-    "backbone": "~1.4.0",
+    "backbone": "~1.1.2",
     "handlebars": "~4.1.2",
-    "hbsfy": "~2.8.1",
+    "hbsfy": "~2.2.1",
     "jquery": "~3.4.1",
     "lodash": "~4.17.11",
-    "debowerify": "~1.5.0"
+    "debowerify": "git://github.com/MaxwellHealth/debowerify"
   },
   "browserify": {
     "transform": [
@@ -36,6 +36,7 @@
     "karma-coverage": "1.1.2",
     "karma-firefox-launcher": "^1.1.0",
     "karma-jasmine": "^2.0.1",
+    "karma-sourcemap-loader": "^0.3.7",
     "react": "^16.8.6",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
