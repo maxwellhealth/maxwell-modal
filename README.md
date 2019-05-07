@@ -1,17 +1,16 @@
-#Maxwell Modal
+# Maxwell Modal
 
-##Bootstrap and Backbone Powered Modal Views
+## Bootstrap and Backbone Powered Modal Views
 
 [![Build Status](https://travis-ci.org/maxwellhealth/maxwell-modal.svg?branch=master)](https://travis-ci.org/maxwellhealth/maxwell-modal)
 
 [![Coverage Status](https://coveralls.io/repos/maxwellhealth/maxwell-modal/badge.svg?branch=master)](https://coveralls.io/r/maxwellhealth/maxwell-modal?branch=master)
 
-##Install
+## Install
 
 `npm install maxwell-modal`
 
-
-##Usage
+## Usage
 
 There are three types of modals available
 
@@ -21,8 +20,6 @@ This is the basic modal. It has two types of configurations
 
 * Content
 * Header, Body, Footer
-
-
 
 ```json
 {  /**
@@ -99,8 +96,7 @@ This will create a modal that contains the word foo and nothing else.
 
 Content can take a DOM element, rendered html, rendered backbone view, handlebars template output or a function.
 
-
-####Header,Body,Footer
+#### Header,Body,Footer
 Header,Body,Footer works similarly except it uses 3 different views for each section of the bootstrap modal.
 
 ```javascript
@@ -120,8 +116,7 @@ var ContentModal = MaxwellModal.Modal.extend({
 Note the handlebars template for the header, rendered html for the body.
 These could take a rendered backbone view.
 
-
-###Confirm Modal
+### Confirm Modal
 
 A replacement for the confirm box
 
@@ -136,7 +131,7 @@ A replacement for the confirm box
 +------------------------+
 ```
 
-####Options
+#### Options
 
 ```json
 { /**
@@ -196,7 +191,7 @@ A replacement for the confirm box
   ```
 This produces a modal with two buttons, yes and no. their labels are configurable as well as what occurs on yes and on no.
 
-###Alert Modal
+### Alert Modal
 
 A replacement for the alert box
 
@@ -211,7 +206,7 @@ A replacement for the alert box
 +------------------------+
 ```
 
-####Options
+#### Options
 
 ```json
 { /**
@@ -263,11 +258,3 @@ A replacement for the alert box
 
 ## TO TEST:
 run `npm test`
-
-
-##TODO
-
-- [ ] better documentation
-- [x] tests
-- [x] make sure all subviews are destroyed properly
-- [x] take react components for sub views
