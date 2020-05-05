@@ -9,9 +9,9 @@
   "author": "James Hrisho",
   "dependencies": {
     "backbone": "~1.1.2",
-    "handlebars": "~2.0.0",
+    "handlebars": "~4.6.0",
     "hbsfy": "~2.2.1",
-    "jquery": "~2.1.3",
+    "jquery": "~3.5.0",
     "lodash": "~3.1.0",
     "debowerify": "~1.2.0"
   },
