@@ -3,7 +3,7 @@ node_js:
   - "0.10"
 before_script:
   - export DISPLAY=:99.0
-  services:
-    - xvfb
+services:
+  - xvfb
 after_success:
   - cat ./coverage/**/*.info | ./node_modules/coveralls/bin/coveralls.js
