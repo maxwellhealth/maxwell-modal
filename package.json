@@ -12,7 +12,7 @@
     "handlebars": "~2.0.0",
     "hbsfy": "~2.2.1",
     "jquery": "~2.1.3",
-    "lodash": "~3.1.0",
+    "lodash": "~4.17.17",
     "debowerify": "~1.2.0"
   },
   "browserify": {
